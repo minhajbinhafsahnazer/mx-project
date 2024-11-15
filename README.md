@@ -28,7 +28,7 @@
 - **How it works**:  
   - Partner with brands using recycled/sustainable materials.  
   - Highlight a **“Green Collection”** with certifications and artisan stories.  
-- **Marketing Tip**: _"Decorate Your Home, Save the Planet."_
+- **Quote**: _"Decorate Your Home, Save the Planet."_
 
 ---
 
