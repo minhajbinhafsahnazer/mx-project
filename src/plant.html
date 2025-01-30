@@ -3,25 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plat Pot - Aesthetic Home Decoratives</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Plant Pot - Aesthetic Home Decoratives</title>
+    <style>
+        /* General Styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            overflow-x: hidden;
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px; /* Added more padding */
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            font-size: 36px; /* Increased font size for logo */
+            font-weight: bold;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #4CAF50;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 120px 20px; /* Added more padding */
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero h1 {
+            font-size: 48px; /* Increased size of heading */
+        }
+
+        .product-listings {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 40px; /* Added more padding */
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .product-widget {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 250px;
+            margin: 15px; /* Adjusted margin */
+        }
+
+        .product-widget img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .product-widget h3 {
+            font-size: 20px; /* Increased font size of product name */
+        }
+
+        .product-widget p {
+            font-size: 18px; /* Increased font size of price */
+        }
+
+        .product-widget button {
+            background: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">Plat Pot</div>
+            <div class="logo">Plant Pot</div>
             <ul class="nav-links">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Shop</a></li>
                 <li><a href="#">Profile</a></li>
                 <li><a href="#">Settings</a></li>
             </ul>
+            <div class="profile">
+                <img src="profile.jpg" alt="Profile Image"> <!-- Added profile image -->
+                <span>John Doe</span> <!-- Profile name -->
+            </div>
         </nav>
     </header>
 
     <main>
         <section class="hero">
-            <h1>Welcome to Plat Pot</h1>
+            <h1>Welcome to Plant Pot</h1>
             <p>Discover our collection of aesthetic and natural home decoratives.</p>
         </section>
 
@@ -38,14 +155,11 @@
                 <p>$39.99</p>
                 <button>Add to Cart</button>
             </div>
-            <!-- Add more product widgets as needed -->
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2023 Plat Pot. All rights reserved.</p>
+        <p>&copy; 2025 Plant Pot. All rights reserved.</p>
     </footer>
-
-    <script src="scripts.js"></script>
 </body>
 </html>

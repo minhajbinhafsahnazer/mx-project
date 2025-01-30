@@ -5,26 +5,18 @@ body, html {
     height: 100%;
     font-family: 'Arial', sans-serif;
     color: #fff;
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
     overflow-x: hidden;
 }
 
-body {
-    background: url('background.jpg') no-repeat center center fixed;
-    background-size: cover;
-    animation: fadeIn 2s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
+/* Header */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
 }
 
 .logo {
@@ -48,6 +40,28 @@ header {
     color: #4CAF50;
 }
 
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    top: 80px;
+    height: 100%;
+}
+
+.sidebar h2 {
+    color: #fff;
+}
+
+.sidebar select, .sidebar input {
+    width: 100%;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+/* Hero Section */
 .hero {
     text-align: center;
     padding: 100px 20px;
@@ -60,18 +74,14 @@ header {
     to { transform: translateY(0); opacity: 1; }
 }
 
+/* Product Listings */
 .product-listings {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     padding: 20px;
+    margin-left: 270px;
     background: rgba(0, 0, 0, 0.7);
-    animation: fadeInUp 2s ease-in-out;
-}
-
-@keyframes fadeInUp {
-    from { transform: translateY(50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
 }
 
 .product-widget {
@@ -116,6 +126,7 @@ header {
     background: #45a049;
 }
 
+/* Footer */
 footer {
     text-align: center;
     padding: 20px;
