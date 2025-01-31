@@ -3,163 +3,553 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plant Pot - Aesthetic Home Decoratives</title>
+    <title>🌿 Plant Pot</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <style>
-        /* General Styles */
-        body, html {
-            margin: 0;
-            padding: 0;
+        /* General Smooth Transitions */
+* {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Page Transitions */
+.page { 
+    display: none; 
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.active { 
+    display: block; 
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Modal Enhancements */
+.modal { 
+    display: none; 
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+.modal.show { 
+    display: flex; 
+    opacity: 1;
+}
+
+/* Interactive Button Hover Effects */
+button {
+    background: #48bb78;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+button:hover {
+    background: #38a169;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Floating Label Input Animations */
+.input-container {
+    position: relative;
+    margin: 20px 0;
+}
+.input-container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+.input-container label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    background: white;
+    padding: 0 5px;
+    color: #999;
+    transition: 0.3s;
+}
+.input-container input:focus + label,
+.input-container input:not(:placeholder-shown) + label {
+    top: 0;
+    font-size: 12px;
+    color: #48bb78;
+}
+
+/* Loading Spinner for Actions */
+.spinner {
+    width: 30px;
+    height: 30px;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #48bb78;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+/* Parallax Scrolling */
+.parallax {
+    background: url('your-image.jpg') center / cover no-repeat fixed;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+}
+
+/* Scroll Reveal Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Enhanced Product Card Interactions */
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Cart Badge */
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #48bb78;
+    border-radius: 50%;
+    padding: 4px 8px;
+    font-size: 0.7rem;
+}
+
+/* Heart Icon */
+.heart-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.heart-icon.active {
+    color: red;
+}
+
+.widget-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            padding: 2rem;
+        }
+        
+        .widget {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            transition: transform 0.3s;
+        }
+        
+        .widget:hover {
+            transform: translateY(-5px);
+        }
+        
+        .widget-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 2rem 1rem;
+
+         .hover-btn {
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hover-btn:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
             height: 100%;
-            font-family: 'Arial', sans-serif;
-            color: #fff;
-            overflow-x: hidden;
-            background: url('background.jpg') no-repeat center center fixed;
-            background-size: cover;
+            background-color: rgba(255,255,255,0.2);
+            transition: all 0.3s;
+            z-index: 1;
         }
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px; /* Added more padding */
-            background: rgba(0, 0, 0, 0.5);
+        .hover-btn:hover:before {
+            width: 100%;
         }
 
-        .logo {
-            font-size: 36px; /* Increased font size for logo */
-            font-weight: bold;
+        /* Input Animations */
+        .floating-input {
+            border: none;
+            border-bottom: 2px solid #e2e8f0;
+            transition: all 0.3s;
         }
 
-        .profile {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        .floating-input:focus {
+            border-bottom-color: #48bb78;
+            box-shadow: 0 2px 4px rgba(72, 187, 120, 0.2);
         }
 
-        .profile img {
+        .floating-label {
+            transform: translateY(-25px);
+            font-size: 0.875rem;
+            color: #48bb78;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .floating-input:focus + .floating-label,
+        .floating-input:not(:placeholder-shown) + .floating-label {
+            transform: translateY(-50px);
+            opacity: 1;
+        }
+
+        /* Loading Spinner */
+        .spinner {
             width: 40px;
             height: 40px;
+            border: 4px solid #f3f4f6;
+            border-top: 4px solid #48bb78;
             border-radius: 50%;
-            object-fit: cover;
+            animation: spin 1s linear infinite;
+            display: none;
         }
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 20px;
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s ease;
+        /* Parallax Effect */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transform: translateZ(-1px) scale(2);
         }
 
-        .nav-links a:hover {
-            color: #4CAF50;
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
         }
 
-        .hero {
-            text-align: center;
-            padding: 120px 20px; /* Added more padding */
-            background: rgba(0, 0, 0, 0.5);
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .hero h1 {
-            font-size: 48px; /* Increased size of heading */
+        /* Product Card Animation */
+        .product-card {
+            transition: all 0.3s ease;
         }
 
-        .product-listings {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            padding: 40px; /* Added more padding */
-            background: rgba(0, 0, 0, 0.7);
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
-        .product-widget {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            width: 250px;
-            margin: 15px; /* Adjusted margin */
-        }
-
-        .product-widget img {
-            width: 100%;
-            border-radius: 10px;
-        }
-
-        .product-widget h3 {
-            font-size: 20px; /* Increased font size of product name */
-        }
-
-        .product-widget p {
-            font-size: 18px; /* Increased font size of price */
-        }
-
-        .product-widget button {
-            background: #4CAF50;
-            color: #fff;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.5);
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+     
     </style>
 </head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">Plant Pot</div>
-            <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Shop</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Settings</a></li>
-            </ul>
-            <div class="profile">
-                <img src="profile.jpg" alt="Profile Image"> <!-- Added profile image -->
-                <span>John Doe</span> <!-- Profile name -->
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-green-600 text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <span class="text-2xl font-bold cursor-pointer" onclick="showPage('home')">🌿 Plant Pot</span>
+                <button onclick="showPage('home')" class="hover:text-green-200">🏠 Home</button>
             </div>
-        </nav>
-    </header>
-
-    <main>
-        <section class="hero">
-            <h1>Welcome to Plant Pot</h1>
-            <p>Discover our collection of aesthetic and natural home decoratives.</p>
-        </section>
-
-        <section class="product-listings">
-            <div class="product-widget">
-                <img src="product1.jpg" alt="Product 1">
-                <h3>Product 1</h3>
-                <p>$29.99</p>
-                <button>Add to Cart</button>
+            <div class="flex space-x-4 items-center">
+                <select id="category-select" class="bg-green-600 text-white">
+                    <option value="">All Categories</option>
+                    <option value="Home Decoratives">Home Decoratives</option>
+                    <option value="Aesthetic Furniture">Aesthetic Furniture</option>
+                    <option value="Landscape">Landscape</option>
+                    <option value="Gardening Essentials">Gardening Essentials</option>
+                    <option value="Kinetic Decoratives">Kinetic Decoratives</option>
+                    <option value="Clocks">Clocks</option>
+                    <option value="Others">Others</option>
+                </select>
+                <button onclick="showPage('wishlist')" class="hover:text-green-200">❤️ Wishlist</button>
+                <button onclick="toggleCart()" class="relative">
+                    🛒 Cart
+                    <span id="cart-count" class="cart-badge">0</span>
+                </button>
+                <button onclick="showPage('profile')" class="hover:text-green-200">👤 Profile</button>
             </div>
-            <div class="product-widget">
-                <img src="product2.jpg" alt="Product 2">
-                <h3>Product 2</h3>
-                <p>$39.99</p>
-                <button>Add to Cart</button>
-            </div>
-        </section>
-    </main>
+        </div>
+    </nav>
 
-    <footer>
-        <p>&copy; 2025 Plant Pot. All rights reserved.</p>
-    </footer>
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center">
+        <div class="bg-white p-8 rounded-lg w-96 max-w-lg max-h-[80vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold">Shopping Cart</h2>
+                <button onclick="toggleCart()" class="text-gray-500 hover:text-gray-700">✕</button>
+            </div>
+            <div id="cart-items" class="divide-y"></div>
+            <div class="mt-6">
+                <div class="text-xl font-bold mb-4">Total: $<span id="cart-total">0</span></div>
+                <div class="flex justify-between">
+                    <button onclick="toggleCart()" class="bg-gray-200 px-4 py-2 rounded">Continue Shopping</button>
+                    <button onclick="checkout()" class="bg-green-600 text-white px-4 py-2 rounded">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wishlist Page -->
+    <div id="wishlist" class="page">
+        <div class="container mx-auto py-8">
+            <h2 class="text-2xl font-bold mb-6">Your Wishlist</h2>
+            <div id="wishlist-items" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Wishlist items will be added here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Rest of the existing pages remain the same -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+
+         // Scroll Reveal
+         function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', reveal);
+
+        // Loading Spinner
+        function showLoading() {
+            const spinner = document.querySelector('.spinner');
+            spinner.style.display = 'block';
+            setTimeout(() => {
+                spinner.style.display = 'none';
+            }, 1500);
+        }
+
+        // Enhanced Add to Cart with Loading
+        function enhancedAddToCart(productId) {
+            showLoading();
+            setTimeout(() => {
+                addToCart(productId);
+            }, 1000);
+        }
+
+        // Apply to existing product cards
+        function enhanceProductCards() {
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                card.classList.add('reveal');
+            });
+        }
+
+        // Apply to form inputs
+        function enhanceFormInputs() {
+            const inputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="password"]');
+            inputs.forEach(input => {
+                input.classList.add('floating-input');
+                const label = document.createElement('span');
+                label.classList.add('floating-label');
+                label.textContent = input.placeholder;
+                input.parentNode.insertBefore(label, input.nextSibling);
+            });
+        }
+
+        // Apply to buttons
+        function enhanceButtons() {
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.classList.add('hover-btn');
+            });
+        }
+
+        // Initialize all enhancements
+        document.addEventListener('DOMContentLoaded', () => {
+            enhanceProductCards();
+            enhanceFormInputs();
+            enhanceButtons();
+            reveal();
+        });    
+        let cart = [];
+let wishlist = [];
+
+/* Toggle Cart Modal with Smooth Transitions */
+function toggleCart() {
+    const modal = document.getElementById('cart-modal');
+    modal.classList.toggle('show');
+
+    if (modal.classList.contains('show')) {
+        renderCart();
+    }
+}
+
+/* Wishlist Toggle Animation */
+function toggleWishlist(productId) {
+    const index = wishlist.indexOf(productId);
+    const heartIcon = document.querySelector(`.heart-icon[data-id='${productId}']`);
+
+    if (index === -1) {
+        wishlist.push(productId);
+        heartIcon.classList.add('active');
+    } else {
+        wishlist.splice(index, 1);
+        heartIcon.classList.remove('active');
+    }
+
+    renderProducts();
+    renderWishlist();
+}
+
+/* Render Products with Enhanced UI */
+function renderProducts(category = '') {
+    const filteredProducts = category 
+        ? products.filter(p => p.category === category) 
+        : products;
+
+    document.getElementById('product-container').innerHTML = filteredProducts.map(product => `
+        <div class="product-card bg-white rounded-lg shadow-md p-4 text-center relative reveal">
+            <span onclick="toggleWishlist(${product.id})" data-id="${product.id}"
+                  class="heart-icon ${wishlist.includes(product.id) ? 'active' : ''}">
+                ${wishlist.includes(product.id) ? '❤️' : '🤍'}
+            </span>
+            <img src="${product.image}" alt="${product.name}" class="mx-auto mb-4 h-48 object-cover">
+            <h3 class="font-bold">${product.name}</h3>
+            <p class="text-sm text-gray-500">${product.category}</p>
+            <p class="text-green-600 font-semibold">$${product.price}</p>
+            <div class="flex justify-between mt-4">
+                <button onclick="showProductDetails(${product.id})" class="bg-gray-200 px-4 py-2 rounded hover:bg-gray-300">
+                    Details
+                </button>
+                <button onclick="addToCart(${product.id})" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+    `).join('');
+}
+
+/* Wishlist Rendering */
+function renderWishlist() {
+    const wishlistProducts = products.filter(p => wishlist.includes(p.id));
+
+    document.getElementById('wishlist-items').innerHTML = wishlistProducts.map(product => `
+        <div class="product-card bg-white rounded-lg shadow-md p-4 text-center relative reveal">
+            <span onclick="toggleWishlist(${product.id})" class="heart-icon active">❤️</span>
+            <img src="${product.image}" alt="${product.name}" class="mx-auto mb-4 h-48 object-cover">
+            <h3 class="font-bold">${product.name}</h3>
+            <p class="text-green-600 font-semibold">$${product.price}</p>
+            <button onclick="addToCart(${product.id})" class="mt-4 bg-green-600 text-white px-4 py-2 rounded w-full hover:bg-green-700">
+                Add to Cart
+            </button>
+        </div>
+    `).join('');
+}
+
+/* Cart Rendering with Loading Spinner */
+function renderCart() {
+    const cartItemsEl = document.getElementById('cart-items');
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+    cartItemsEl.innerHTML = `
+        <div class="spinner"></div>
+    `;
+
+    setTimeout(() => {
+        cartItemsEl.innerHTML = cart.map(item => `
+            <div class="flex justify-between items-center py-4 reveal">
+                <div class="flex items-center">
+                    <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded">
+                    <div class="ml-4">
+                        <h3 class="font-bold">${item.name}</h3>
+                        <div class="flex items-center mt-1">
+                            <button onclick="updateQuantity(${item.id}, ${item.quantity - 1})" 
+                                    class="px-2 border rounded hover:bg-gray-200">-</button>
+                            <span class="mx-2">${item.quantity}</span>
+                            <button onclick="updateQuantity(${item.id}, ${item.quantity + 1})" 
+                                    class="px-2 border rounded hover:bg-gray-200">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <p>$${(item.price * item.quantity).toFixed(2)}</p>
+                    <button onclick="removeFromCart(${item.id})" class="text-red-500 text-sm hover:text-red-700">Remove</button>
+                </div>
+            </div>
+        `).join('');
+
+        document.getElementById('cart-total').textContent = total.toFixed(2);
+    }, 500);
+}
+
+/* Parallax Effect */
+window.addEventListener("scroll", function () {
+    let scrolled = window.scrollY;
+    document.querySelector(".parallax").style.backgroundPositionY = -(scrolled * 0.5) + "px";
+});
+
+/* Scroll Reveal Animation */
+document.addEventListener("DOMContentLoaded", function() {
+    let elements = document.querySelectorAll(".reveal");
+
+    function revealOnScroll() {
+        elements.forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight - 50) {
+                el.classList.add("visible");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll(); // Initial check
+});
+
+
+        // Initialize everything else as before...
+    </script>
 </body>
 </html>
